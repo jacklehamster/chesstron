@@ -211,6 +211,7 @@ function updateView(model) {
     if(model.history.length) {
         var undoButton = (history.appendChild(document.createElement("div"))).appendChild(document.createElement('button'));
         undoButton.appendChild(document.createTextNode("undo"));
+        undoButton.style.display = isPeerPlaying() ? "none":"";
         undoButton.onclick = function() {
             if(onUndo) {
                 onUndo();
