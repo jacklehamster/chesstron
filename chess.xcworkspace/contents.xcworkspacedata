@@ -25,4 +25,7 @@
    <FileRef
       location = "group:cosmo.php">
    </FileRef>
+   <FileRef
+      location = "group:index.html">
+   </FileRef>
 </Workspace>
