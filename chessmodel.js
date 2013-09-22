@@ -59,7 +59,7 @@ ChessBoard.prototype = {
         for(var row=0;row<8;row++) {
             array.push(initialBoard[row].join(""));
         }
-        return array.join("");
+        return array.join("\n");
     },
     //  gameStarted
     gameStarted : function() {
@@ -71,12 +71,12 @@ ChessBoard.prototype = {
     },
     //  getCell
     getCell : function(col,row) {
-        return this.board.substr(row*(8*2)+col*2,2)
+        return this.board.substr(row*(8*2+1)+col*2,2)
     },
     //  getCell
     setCell : function(col,row,value) {
         var array = this.board.split("");
-        array.splice(row*(8*2)+col*2,2,value);
+        array.splice(row*(8*2+1)+col*2,2,value);
         this.board = array.join("");
     },
     //  isBorderLine
