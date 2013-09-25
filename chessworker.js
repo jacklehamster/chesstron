@@ -1,4 +1,4 @@
-importScripts("chessmodel.js","chessplayer.js");
+importScripts("chessmodel.js","chessplayer.js","chessutil.js");
 
 onmessage = function (oEvent) {
     var model = new ChessBoard(oEvent.data.model);
