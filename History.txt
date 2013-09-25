@@ -1,0 +1,5 @@
+v1.0.0
+This is the first history file, so it starts with everything.
+- Chess Player with AI in JavaScript
+- JavaScript workers
+- Multiplayer ability

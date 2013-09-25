@@ -28,4 +28,20 @@
    <FileRef
       location = "group:index.html">
    </FileRef>
+   <Group
+      location = "container:"
+      name = "legal">
+      <FileRef
+         location = "group:COPYRIGHT.txt">
+      </FileRef>
+      <FileRef
+         location = "group:DUAL-LICENSING.txt">
+      </FileRef>
+      <FileRef
+         location = "group:GPL.txt">
+      </FileRef>
+      <FileRef
+         location = "group:History.txt">
+      </FileRef>
+   </Group>
 </Workspace>
