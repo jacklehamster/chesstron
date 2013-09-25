@@ -7,7 +7,7 @@ Chess player AI written in JavaScript
 Sept 24, 2014 - Update: Added JavaScript Workers!
 
 Try the demo at:
-http://jacklehamster.github.io/chess-ai-javascript/
+http://jacklehamster.github.io/chesstron/
 
 
 About the project:
