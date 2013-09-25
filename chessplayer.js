@@ -8,16 +8,45 @@ var pieceValues = {
     p:1
 };
 
-console.log("choiceLimit:",choiceLimit);
-console.log("pieceValues:",JSON.stringify(pieceValues,null,'\t'));
-
+if(typeof(console)!='undefined') {
+    console.log("choiceLimit:",choiceLimit);
+    console.log("pieceValues:",JSON.stringify(pieceValues,null,'\t'));
+}
 
 function Player() {
 }
 
 Player.prototype = {
+    callback : null,
+    worker: null,
     localHuman : false,
+    useWorker: false,
     decide : function(model,callback) {
+    },
+    workerDecide : function(model,callback) {
+        this.callback = callback;
+        if(!this.worker) {
+            this.worker = new Worker("chessworker.js");
+        }
+        this.worker.onmessage = function(oEvent) {
+            callback(oEvent.data);
+        };
+        this.worker.postMessage(
+            {
+                worker : this.useWorker,
+                model: {
+                    wCastlingRight : model.wCastlingRight,
+                    wCastlingLeft : model.wCastlingLeft,
+                    bCastlingRight : model.bCastlingRight,
+                    bCastlingLeft : model.bCastlingLeft,
+                    history : [],
+                    turn : model.turn,
+                    board : model.board,
+                    players : model.players
+                },
+                decide : this.decide.toString()
+            }
+        );
     }
 };
 
@@ -136,10 +165,6 @@ function compareChoices(choice1,choice2) {
     return choice1.evaluation-choice2.evaluation;
 }
 
-function think(player,model,callback) {
-    player.think(model,callback);
-}
-
 var timeout = null;
 
 function ThinkingPlayer() {
@@ -147,12 +172,13 @@ function ThinkingPlayer() {
     this.filtering = false;
     this.depth = 0;
     this.choices = null;
+    this.useWorker = "ThinkingPlayer";
 }
 ThinkingPlayer.prototype = new Player();
 ThinkingPlayer.prototype.decide = function(model,callback) {
     var moves = model.getPossibleMoves();
     if(moves.length) {
-        timeout = setTimeout(think,100,this,model,callback);
+        this.think(model,callback);
     }
     else {
         callback(null);
@@ -180,75 +206,24 @@ ThinkingPlayer.prototype.getCurrentChoice = function(model) {
 }
 
 ThinkingPlayer.prototype.think = function(model,callback) {
-    var root;
-    if(timeout) {
-        clearTimeout(timeout);
-    }
-    if(!this.imagining && !this.filtering) {
-        if(!this.choices) {
-            root = this.getCurrentChoice(model);
-            this.choices = [root];
-            this.imagining = true;
-            this.depth = 0;
-        }
-        else {
-            root = this.choices[0].getRoot();
-            if(root.children.length<=1) {
-                this.choices = null;
-                callback(root.children[0].move);
-                return;
-            }
-            else {
-                this.imagining = true;
-            }
-        }
-    }
-    else if(this.imagining) {
-        if(this.choices.length) {
-            this.choices = this.imagine(this.choices,1);
-            this.depth ++;
-            if(this.choices.length>choiceLimit) {
-                this.imagining = false;
-                this.filtering = true;
-            }
-        }
-        else {
-            console.log("Computer has no choice");
-        }
-    }
-    else if(this.filtering) {
-        this.choices = this.filter(this.choices);
-        root = this.choices[0].getRoot();
-        if(this.choices.length<choiceLimit || root.children.length<=1) {
-            this.filtering = false;
-            this.imagining = false;
-            console.log("choices:",root.children.length,"nodes:",this.choices.length,"depth:",this.depth);
-        }
-    }
-    timeout = setTimeout(think,100,this,model,callback);
     
-    if(document.getElementById("divturn")) {
-        document.getElementById("divturn").innerHTML += ".";
-    }
-/*    choices = this.imagine(choices,1);
-    root = choices[0].getRoot();
-    var depth = 0;
-    while(root.children.length>1) {
-        if(choices.length) {
-            do {
-                choices = this.imagine(choices,1);
-                depth++;
-            } while(choices.length<choiceLimit);
+    var root = this.getCurrentChoice(model);
+    var choices = [root];
+    var depth = 0;  //  how deep is the imagination
+
+    do {
+        while(choices.length<=choiceLimit) {
+            choices = this.imagine(choices,1);
+            depth ++;
         }
         
-        do {
+        while(choices.length>choiceLimit && root.children.length>1) {
             choices = this.filter(choices);
             root = choices[0].getRoot();
-        } while(choices.length>choiceLimit && root.children.length>1);
-        console.log("choices:",root.children.length,"nodes:",choices.length,"depth:",depth);
-    }
-    
-    callback(root.children[0].move);*/
+        }
+    } while(root.children.length>1);
+
+    callback(root.children[0].move);
 }
 
 ThinkingPlayer.prototype.imagine = function(choices,depth) {
@@ -293,10 +268,19 @@ ThinkingPlayer.prototype.evaluate = function(model) {
 //  HumanPlayer : Player
 
 function HumanPlayer() {
-    this.callback = null;
 }
 HumanPlayer.prototype = new Player();
 HumanPlayer.prototype.decide = function(model,callback) {
     this.callback = callback;
 }
 HumanPlayer.prototype.localHuman = true;
+
+//  WorkerPlayer : Player
+
+function WorkerPlayer() {
+}
+WorkerPlayer.prototype = new Player();
+WorkerPlayer.prototype.decide = function(model,callback) {
+    
+}
+

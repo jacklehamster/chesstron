@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>D57ED050-8EAC-4198-8D35-67664B2D3521</string>
+	<key>IDESourceControlProjectName</key>
+	<string>chess</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>06FABA0C-330C-48B8-A369-1F95A0B1A2C6</key>
+		<string>https://github.com/jacklehamster/chess-ai-javascript.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>chess.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>06FABA0C-330C-48B8-A369-1F95A0B1A2C6</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/jacklehamster/chess-ai-javascript.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>06FABA0C-330C-48B8-A369-1F95A0B1A2C6</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>06FABA0C-330C-48B8-A369-1F95A0B1A2C6</string>
+			<key>IDESourceControlWCCName</key>
+			<string>chess-ai-javascript</string>
+		</dict>
+	</array>
+</dict>
+</plist>

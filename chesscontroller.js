@@ -114,8 +114,14 @@ document.onmouseup = function(e) {
 
 function nextTurn() {
     if(model.gameStarted()) {
-       var moves = model.getTotalValidMoves(model.turn,true);
-       players[model.turn].decide(model,onPlayed);
+        var moves = model.getTotalValidMoves(model.turn,true);
+        var player = players[model.turn];
+        if(player.useWorker) {
+            player.workerDecide(model,onPlayed);  //  TODO - thread it
+        }
+        else {
+            player.decide(model,onPlayed);
+        }
     }
 }
 

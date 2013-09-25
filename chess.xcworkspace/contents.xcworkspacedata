@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:chessworker.js">
+   </FileRef>
+   <FileRef
       location = "group:chessdebug.js">
    </FileRef>
    <FileRef

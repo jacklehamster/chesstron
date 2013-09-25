@@ -171,7 +171,7 @@ ChessBoard.prototype = {
             }
             
             this.switchTurn();
-            if(history)
+            if(this.history)
                 this.history.push([from,to]);
             
             if(this.hasKing() && this.inCheck()) {
