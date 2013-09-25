@@ -23,9 +23,6 @@
       location = "group:chessutil.js">
    </FileRef>
    <FileRef
-      location = "group:chess.html">
-   </FileRef>
-   <FileRef
       location = "group:cosmo.php">
    </FileRef>
    <FileRef
