@@ -1,6 +1,6 @@
-Chessbot vs Humans
+Chesstron
 ===================
-(title in progress)
+
 
 Chess player AI written in JavaScript
 
