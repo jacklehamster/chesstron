@@ -43,6 +43,8 @@ Player.prototype = {
     useWorker: false,
     decide : function(model,callback) {
     },
+    opponentTurn : function(model) {
+    },
     workerDecide : function(model,callback) {
         this.callback = callback;
         if(!this.worker) {
