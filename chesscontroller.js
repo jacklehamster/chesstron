@@ -93,6 +93,7 @@ function onStartGame() {
         w:new HumanPlayer(),
         b:isComputerPlaying() ? new ThinkingPlayer() : new HumanPlayer()
     };
+    nextTurn();
     updateView(model);
 }
 
