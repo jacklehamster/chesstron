@@ -20,9 +20,11 @@
 importScripts("chessmodel.js","chessplayer.js","chessutil.js");
 
 onmessage = function (oEvent) {
-    var model = new ChessBoard(oEvent.data.model);
-    var player = new (eval(oEvent.data.worker))();
-    player.decide = eval("("+oEvent.data.decide+")");
-    postMessage("TET123");
-    player.decide(model,postMessage);
+    var type = oEvent.data.type;
+    if(type=="playerTurn") {
+        var model = new ChessBoard(oEvent.data.model);
+        var player = new (eval(oEvent.data.worker))();
+        player.decide = eval("("+oEvent.data.decide+")");
+        player.decide(model,postMessage);
+    }
 };
