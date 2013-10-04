@@ -135,8 +135,10 @@ function nextTurn() {
     if(model.gameStarted()) {
         var moves = model.getTotalValidMoves(model.turn,true);
         var player = players[model.turn];
+        var opponent = players[model.oppositeSide(model.turn)];
+        opponent.opponentTurn(model);
         if(player.useWorker) {
-            player.workerDecide(model,onPlayed);  //  TODO - thread it
+            player.workerDecide(model,onPlayed);
         }
         else {
             player.decide(model,onPlayed);
