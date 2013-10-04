@@ -41,22 +41,30 @@ Player.prototype = {
     worker: null,
     localHuman : false,
     useWorker: false,
-    decide : function(model,callback) {
-    },
-    opponentTurn : function(model) {
-    },
-    workerDecide : function(model,callback) {
-        this.callback = callback;
+    getWorker : function() {
         if(!this.worker) {
             this.worker = new Worker("chessworker.js");
         }
-        this.worker.onmessage = function(oEvent) {
+        return this.worker;
+    },
+    decide : function(model,callback) {
+    },
+    opponentTurn : function(model) {
+        this.informWorker("opponentTurn",model);
+    },
+    workerDecide : function(model,callback) {
+        this.callback = callback;
+        this.getWorker().onmessage = function(oEvent) {
             callback(oEvent.data);
         };
-        this.worker.postMessage(
+        this.informWorker("playerTurn",model);
+    },
+    informWorker : function(type,model) {
+        this.getWorker().postMessage(
             {
+                type   : type,
                 worker : this.useWorker,
-                model: {
+                model  : {
                     wCastlingRight : model.wCastlingRight,
                     wCastlingLeft : model.wCastlingLeft,
                     bCastlingRight : model.bCastlingRight,
