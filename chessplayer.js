@@ -228,6 +228,7 @@ ThinkingPlayer.prototype.spread = function(choices) {
             newChoices.pop();
         }
     }
+    
     return newChoices;
 };
 
