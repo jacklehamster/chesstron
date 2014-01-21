@@ -17,7 +17,7 @@
  
  */
 
-
+alert('here');
 
 
 var model = new ChessBoard();
