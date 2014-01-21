@@ -17,9 +17,6 @@
  
  */
 
-alert('here');
-
-
 var model = new ChessBoard();
 
 var mousePosition = {};
