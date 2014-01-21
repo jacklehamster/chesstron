@@ -100,7 +100,6 @@ function initView() {
             img.onmouseover = cellHover;
             img.onmouseout = cellOut;
             img.onmousedown = cellDown;
-            img.ondragstart = function() {alert('test';)};
             img.draggable = false;
             img.style.border = "3px solid transparent";
         }
