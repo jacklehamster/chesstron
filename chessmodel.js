@@ -194,7 +194,7 @@ ChessBoard.prototype = {
             this.switchTurn();
             if(this.history)
                 this.history.push([from,to]);
-            if(pieceTaken && this.piecesTaken)
+            if(pieceTaken!="  " && this.piecesTaken)
                 this.piecesTaken.push(pieceTaken);
             if(this.hasKing() && this.inCheck()) {
                 if(this.turn=="w") {
