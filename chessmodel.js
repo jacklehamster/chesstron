@@ -44,6 +44,7 @@ function ChessBoard(model) {
     this.bCastlingLeft = model?model.bCastlingLeft : true;
     
     this.history = model ? model.history.concat([]) : [];
+    this.piecesTaken = model ? model.history.concat([]) : [];
     this.turn = model ? model.turn : null;
     this.board = model ? model.board : this.initBoard();
     this.players = model ? model.players : {"w":""+Math.random(),"b":""+Math.random()};
@@ -193,7 +194,8 @@ ChessBoard.prototype = {
             this.switchTurn();
             if(this.history)
                 this.history.push([from,to]);
-            
+            if(pieceTaken && this.piecesTaken)
+                this.piecesTaken.push(pieceTaken);
             if(this.hasKing() && this.inCheck()) {
                 if(this.turn=="w") {
                     this.wCastlingRight = this.wCastlingLeft = false;
@@ -202,7 +204,6 @@ ChessBoard.prototype = {
                     this.bCastlingRight = this.bCastlingLeft = false;
                 }
             }
-            this.lastPieceTaken = pieceTaken;
             this.lastMove = to;
         }
         return pieceTaken;
