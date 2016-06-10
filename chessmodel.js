@@ -202,8 +202,9 @@ ChessBoard.prototype = {
                     this.bCastlingRight = this.bCastlingLeft = false;
                 }
             }
+            this.lastPieceTaken = pieceTaken;
+            this.lastMove = to;
         }
-        this.lastMove = to;
         return pieceTaken;
     },
     //  switchTurn
