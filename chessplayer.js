@@ -242,7 +242,7 @@ ThinkingPlayer.prototype.think = function(model,callback) {
     var root = this.getCurrentChoice(model);
     var choices = [root];
     var depth = 0;  //  how deep is the imagination
-
+    var done = false;
     do {
         while(choices.length<=choiceLimit) {
             choices = this.imagine(choices,1);
@@ -253,12 +253,12 @@ ThinkingPlayer.prototype.think = function(model,callback) {
             var firstChoice = choices[0];
             choices = this.filter(choices);
             if(choices.length==0) {
-                callback(firstChoice.move);
-                return;
+                choices = [firstChoice];
+                dones = true;
             }
             root = choices[0].getRoot();
         }
-    } while(root.children.length>1);
+    } while(root.children.length>1 && !done);
 
     callback(root.children[0].move);
 }
