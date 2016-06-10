@@ -70,6 +70,7 @@ Player.prototype = {
                     bCastlingRight : model.bCastlingRight,
                     bCastlingLeft : model.bCastlingLeft,
                     history : [],
+                    piecesTaken : [],
                     turn : model.turn,
                     board : model.board,
                     players : model.players
