@@ -128,6 +128,9 @@ function initView() {
     var div = chessboard.appendChild(document.createElement("div"));
     div.id = "divturn";
     
+    var div = chessboard.appendChild(document.createElement("div"));
+    div.id = "piecesTaken";
+    
     var button = chessboard.appendChild(document.createElement("button"));
     button.id = "startButton";
     button.innerHTML = "Start game";
@@ -253,6 +256,15 @@ function updateView(model) {
         var div = history.appendChild(document.createElement("div"));
         div.innerHTML = displayMove(move,i%2==0?"#999999":"black");
     }
+    
+    var piecesTaken = document.getElementById("piecesTaken");
+    piecesTaken.innerHTML = "";
+    for(var i=0;i<model.piecesTaken.length;i++) {
+      var img = document.createElementById("img");
+      img.src = getCachedImageURL(model.piecesTaken[i]);
+      piecesTaken.appendChild(img);
+    }
+    
     if(model.turn && !playerID) {
         playerID = model.players[model.turn];
     }
