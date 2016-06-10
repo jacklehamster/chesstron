@@ -44,7 +44,7 @@ function ChessBoard(model) {
     this.bCastlingLeft = model?model.bCastlingLeft : true;
     
     this.history = model ? model.history.concat([]) : [];
-    this.piecesTaken = model ? model.history.concat([]) : [];
+    this.piecesTaken = model ? model.piecesTaken.concat([]) : [];
     this.turn = model ? model.turn : null;
     this.board = model ? model.board : this.initBoard();
     this.players = model ? model.players : {"w":""+Math.random(),"b":""+Math.random()};
