@@ -159,7 +159,16 @@ function hoverCell(x,y,hilight) {
     for(var row=0;row<8;row++) {
         for(var col=0;col<8;col++) {
             var viewCell = getViewCell(col,row);
-            viewCell.style.borderColor = hilight && viewCell==hoveredCell ? "#00FF00" : lastMove && lastMove.x==col && lastMove.y==row ? "#FFFFFF" : "transparent";
+            viewCell.style.borderColor = hilight && viewCell==hoveredCell ? "#00FF00" : lastMove && lastMove.x==col && lastMove.y==row ? "#000000" : "transparent";
+        }
+    }
+}
+
+function refreshCells() {
+    for(var row=0;row<8;row++) {
+        for(var col=0;col<8;col++) {
+            var viewCell = getViewCell(col,row);
+            viewCell.style.borderColor = lastMove && lastMove.x==col && lastMove.y==row ? "#000000" : "transparent";
         }
     }
 }
@@ -248,6 +257,7 @@ function updateView(model) {
         playerID = model.players[model.turn];
     }
     lastMove = model.lastMove;
+    refreshCells();
 }
 
 function isComputerPlaying() {
@@ -304,7 +314,7 @@ function hilight(moves,target,red) {
             viewCell.style.borderColor = 
                 hilightCell && targetCell==viewCell ? (red ? "#FF0000":"#FFFF00") :
                 hilightCell ? "#FFBB00" :
-                lastMove && lastMove.x==col && lastMove.y==row ? "#FFFFFF" : "transparent";
+                lastMove && lastMove.x==col && lastMove.y==row ? "#000000" : "transparent";
         }
     }
 }
