@@ -76,6 +76,7 @@ function initView() {
     history.style.textAlign = "center";
     history.style.verticalAlign = "top";
     history.setAttribute("rowspan",10);
+    history.style.overflow = "auto";
     
     for(var row=0;row<8;row++) {
         var tr = tbody.appendChild(document.createElement('tr'));
