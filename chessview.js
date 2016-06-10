@@ -262,8 +262,8 @@ function updateView(model) {
     for(var i=0;i<model.piecesTaken.length;i++) {
       var img = document.createElement("img");
       img.src = getCachedImageURL(model.piecesTaken[i]);
-      img.width = "20px";
-      img.height = "20px";
+      img.width = "20";
+      img.height = "20";
       piecesTaken.appendChild(img);
     }
     
