@@ -260,7 +260,7 @@ function updateView(model) {
     var piecesTaken = document.getElementById("piecesTaken");
     piecesTaken.innerHTML = "";
     for(var i=0;i<model.piecesTaken.length;i++) {
-      var img = document.createElementById("img");
+      var img = document.createElement("img");
       img.src = getCachedImageURL(model.piecesTaken[i]);
       piecesTaken.appendChild(img);
     }
