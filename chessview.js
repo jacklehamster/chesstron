@@ -246,6 +246,7 @@ function updateView(model) {
     if(model.turn && !playerID) {
         playerID = model.players[model.turn];
     }
+    console.log(model.lastMove);
 }
 
 function isComputerPlaying() {
