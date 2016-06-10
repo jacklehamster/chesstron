@@ -203,6 +203,7 @@ ChessBoard.prototype = {
                 }
             }
         }
+        console.log(to);
         return pieceTaken;
     },
     //  switchTurn
