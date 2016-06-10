@@ -304,7 +304,7 @@ function hilight(moves,target,red) {
             viewCell.style.borderColor = 
                 hilightCell && targetCell==viewCell ? (red ? "#FF0000":"#FFFF00") :
                 hilightCell ? "#FFBB00" :
-                lastMove.x==col && lastMove.y==row ? "#FFFFFF" : "transparent";
+                lastMove && lastMove.x==col && lastMove.y==row ? "#FFFFFF" : "transparent";
         }
     }
 }
