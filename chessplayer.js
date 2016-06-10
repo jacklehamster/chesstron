@@ -250,7 +250,12 @@ ThinkingPlayer.prototype.think = function(model,callback) {
         }
         
         while(choices.length>choiceLimit && root.children.length>1) {
+            var firstChoice = choices[0];
             choices = this.filter(choices);
+            if(choices.length==0) {
+                callback(firstChoice.move);
+                return;
+            }
             root = choices[0].getRoot();
         }
     } while(root.children.length>1);
