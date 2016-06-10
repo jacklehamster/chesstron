@@ -159,7 +159,7 @@ function hoverCell(x,y,hilight) {
     for(var row=0;row<8;row++) {
         for(var col=0;col<8;col++) {
             var viewCell = getViewCell(col,row);
-            viewCell.style.borderColor = hilight && viewCell==hoveredCell ? "#00FF00" : lastMove && lastMove.x==col && lastMove.y==row ? "#FFFFFF" "transparent";
+            viewCell.style.borderColor = hilight && viewCell==hoveredCell ? "#00FF00" : lastMove && lastMove.x==col && lastMove.y==row ? "#FFFFFF" : "transparent";
         }
     }
 }
