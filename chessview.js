@@ -28,6 +28,7 @@ var playerID = null;
 var hoveredCell = null;
 var draggedImage = null;
 var selected = null;
+var lastMove = null;
 
 function initView() {
     var chessboard = document.getElementById('chessboard');
@@ -246,7 +247,7 @@ function updateView(model) {
     if(model.turn && !playerID) {
         playerID = model.players[model.turn];
     }
-    console.log(model.lastMove);
+    lastMove = model.lastMove;
 }
 
 function isComputerPlaying() {
@@ -302,7 +303,8 @@ function hilight(moves,target,red) {
             var hilightCell = moveHash[col+"_"+row];
             viewCell.style.borderColor = 
                 hilightCell && targetCell==viewCell ? (red ? "#FF0000":"#FFFF00") :
-                hilightCell ? "#FFBB00" : "transparent";
+                hilightCell ? "#FFBB00" :
+                lastMove.x==col && lastMove.y==row ? "#FFFFFF" : "transparent";
         }
     }
 }
