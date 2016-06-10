@@ -76,8 +76,7 @@ function initView() {
     history.style.textAlign = "center";
     history.style.verticalAlign = "top";
     history.setAttribute("rowspan",10);
-    history.style.overflow = "auto";
-    
+
     for(var row=0;row<8;row++) {
         var tr = tbody.appendChild(document.createElement('tr'));
         var th = tr.appendChild(document.createElement('th'));
@@ -239,7 +238,7 @@ function updateView(model) {
             }
         };
     }
-    for(var i=0;i<model.history.length;i++) {
+    for(var i=Math.max(0,model.history.length-20);i<model.history.length;i++) {
         var move = model.history[i];
         var div = history.appendChild(document.createElement("div"));
         div.innerHTML = displayMove(move,i%2==0?"#999999":"black");
