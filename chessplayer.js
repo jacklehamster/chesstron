@@ -117,7 +117,7 @@ Choice.prototype = {
     },
     spread : function() {
         var choices = [];
-        if(this.model.hasKing()) {
+//        if(this.model.hasKing()) {
             var moves = this.model.getPossibleMoves();
             for(var i=0;i<moves.length;i++) {
                 var model = new ChessBoard(this.model);
@@ -126,7 +126,7 @@ Choice.prototype = {
                 choices.push(choice);
             }
             this.children = choices;
-        }
+ //       }
         return choices;
     },
     clearEvaluation : function() {
