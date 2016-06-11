@@ -18,6 +18,7 @@
  */
 
 var model = new ChessBoard();
+var initialBoard = model;
 
 var mousePosition = {};
 
@@ -85,6 +86,7 @@ function onCellDown(x,y) {
 }
 
 function onStartGame() {
+    model = initialBoard;
     model.startGame();
     players = {
         w:new HumanPlayer(),
