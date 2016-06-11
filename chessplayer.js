@@ -119,8 +119,7 @@ Choice.prototype = {
         var choices = [];
 //        if(this.model.hasKing()) {
             var moves = this.model.getPossibleMoves();
-    console.log(moves);
-            
+
             for(var i=0;i<moves.length;i++) {
                 var model = new ChessBoard(this.model);
                 model.move(moves[i][0],moves[i][1],true,false);
