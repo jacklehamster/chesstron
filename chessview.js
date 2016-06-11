@@ -234,6 +234,7 @@ function updateView(model) {
         }
     }
     document.getElementById("divturn").innerHTML =
+        !model.turn ? "" :
         !model.hasKing() ? (model.turn=="w" ? "white lost" : "black lost") :
         model.checkMate() ? (model.turn=="w" ? "check mate. white lost" : "check mate. black lost") :
         model.inCheck() ? (model.turn=="w" ? "check! white's turn" : "check! black's turn") :
