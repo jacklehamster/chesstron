@@ -204,6 +204,9 @@ ChessBoard.prototype = {
                     this.bCastlingRight = this.bCastlingLeft = false;
                 }
             }
+            if(pieceTaken=="wk" || pieceTaken=="bk") {
+               this.turn = null;
+            }
             this.lastMove = to;
         }
         return pieceTaken;
