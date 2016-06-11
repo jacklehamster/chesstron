@@ -110,6 +110,7 @@ ChessBoard.prototype = {
     },
     //  startGame
     startGame : function() {
+        this.initBoard();
         this.turn = "w";
     },
     //  canMove
