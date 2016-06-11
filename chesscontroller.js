@@ -49,7 +49,7 @@ function joinRoom(room) {
 }
 
 function canPlay() {
-    return players[model.turn].localHuman && (!isPeerPlaying() || model.players[model.turn]==playerID);
+    return model.hasKing() && players[model.turn].localHuman && (!isPeerPlaying() || model.players[model.turn]==playerID);
 }
 
 function onCellHover(x,y) {
