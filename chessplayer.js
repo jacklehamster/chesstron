@@ -104,7 +104,6 @@ function NoPlayer() {
 }
 NoPlayer.prototype = new Player();
 NoPlayer.prototype.decide = function(model,callback) {
-  callback(null);
 }
 
 //  ThinkingPlayer : Player
