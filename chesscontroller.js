@@ -97,6 +97,7 @@ function onStartGame() {
 }
 
 function onCheckComputerPlayer() {
+ console.log(model.hasKing());
     players.b = !model.hasKing() ? new NoPlayer() : isComputerPlaying() ? new ThinkingPlayer() : new HumanPlayer();
     updateView(model);
     nextTurn();
