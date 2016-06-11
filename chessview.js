@@ -234,11 +234,12 @@ function updateView(model) {
         }
     }
     document.getElementById("divturn").innerHTML =
+        !model.hasKing() ? (model.turn=="w" ? "white lost" : "black lost") :
         model.checkMate() ? (model.turn=="w" ? "check mate. white lost" : "check mate. black lost") :
         model.inCheck() ? (model.turn=="w" ? "check! white's turn" : "check! black's turn") :
         model.turn=="w" ? "white's turn" :
         model.turn=="b" ? "black's turn" : "";
-    document.getElementById("startButton").style.display = model.turn ? "none" : "";
+    document.getElementById("startButton").style.display = model.turn && model.hasKing() ? "none" : "";
     var history = document.getElementById("history");
     history.innerHTML = "";
     if(model.history.length) {
