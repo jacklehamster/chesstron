@@ -259,9 +259,9 @@ ChessBoard.prototype = {
             var move = moves[i];
             var board = new ChessBoard(this);
             board.move(new Cell(col,row),move,true,false);
-            if(!board.kingTargeted(side)) {
+//            if(!board.kingTargeted(side)) {
                 finalMoves.push(move);
-            }
+  //          }
         }
         return finalMoves;
     },
