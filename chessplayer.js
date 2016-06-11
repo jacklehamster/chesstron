@@ -98,6 +98,15 @@ RandomPlayer.prototype.decide = function(model,callback) {
     }
 };
 
+// NoPlayer : Player
+
+function NoPlayer() {
+}
+NoPlayer.prototype = new Player();
+NoPlayer.prototype.decide = function(model,callback) {
+  callback(null);
+}
+
 //  ThinkingPlayer : Player
 
 function Choice(parent,player,model,move) {
