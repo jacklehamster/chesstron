@@ -486,9 +486,14 @@ ChessBoard.prototype = {
     getPossibleMoves : function() {
         return this.getTotalValidMoves(this.turn,true);
     },
+    // gameOver
+    gameOver : function() {
+        return !this.findPiece(side+"k");
+    },
     //  kingTargeted
     kingTargeted : function (side) {
         var king = this.findPiece(side+"k");
+        if(!king) return false;
         var totalOpponentMoves = this.getTotalCellCoverage(this.oppositeSide(side),false);
         for(var i=0;i<totalOpponentMoves.length;i++) {
             if(king.x==totalOpponentMoves[i].x && king.y==totalOpponentMoves[i].y) {
