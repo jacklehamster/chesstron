@@ -253,6 +253,7 @@ ThinkingPlayer.prototype.think = function(model,callback) {
             var firstChoice = choices[0];
             choices = this.filter(choices);
             if(choices.length==0) {
+                console.log("No choice");
                 choices = [firstChoice];
                 dones = true;
             }
