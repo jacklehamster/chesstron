@@ -131,7 +131,7 @@ document.onmouseup = function(e) {
 }
 
 function nextTurn() {
-    if(model.gameStarted()) {
+    if(model.gameStarted() && model.hasKing()) {
         var moves = model.getTotalValidMoves(model.turn,true);
         var player = players[model.turn];
         var opponent = players[model.oppositeSide(model.turn)];
